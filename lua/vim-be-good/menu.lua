@@ -19,6 +19,15 @@ local difficultyHeader = {
 }
 
 local instructions = {
+"",
+"██╗   ██╗██╗███╗   ███╗    ██████╗ ███████╗     ██████╗  ██████╗  ██████╗ ██████╗ ",
+"██║   ██║██║████╗ ████║    ██╔══██╗██╔════╝    ██╔════╝ ██╔═══██╗██╔═══██╗██╔══██╗",
+"██║   ██║██║██╔████╔██║    ██████╔╝█████╗      ██║  ███╗██║   ██║██║   ██║██║  ██║",
+"╚██╗ ██╔╝██║██║╚██╔╝██║    ██╔══██╗██╔══╝      ██║   ██║██║   ██║██║   ██║██║  ██║",
+" ╚████╔╝ ██║██║ ╚═╝ ██║    ██████╔╝███████╗    ╚██████╔╝╚██████╔╝╚██████╔╝██████╔╝",
+"  ╚═══╝  ╚═╝╚═╝     ╚═╝    ╚═════╝ ╚══════╝     ╚═════╝  ╚═════╝  ╚═════╝ ╚═════╝ ",
+"",
+"",
     "VimBeGood is a collection of small games for neovim which are",
     "intended to help you improve your vim proficiency.",
     "delete a line to select the line.  If you delete a difficulty,",
@@ -27,7 +36,6 @@ local instructions = {
 }
 
 local credits = {
-    "",
     "",
     "Created by ThePrimeagen",
     "Brandoncc",
@@ -43,11 +51,11 @@ function Menu:new(window, onResults)
         buffer = window.buffer,
         onResults = onResults,
 
-        -- easy
-        difficulty = types.difficulty[2],
+        -- default to hard
+        difficulty = types.difficulty[4],
 
-        -- relative
-        game = types.games[1],
+        -- default to random
+        game = types.games[6],
     }
 
     window.buffer:clear()

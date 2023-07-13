@@ -40,6 +40,11 @@ local extraSentences = {
     "I see what you mean as I am already running out of interesting things to say",
     "Teenage Dirtbag by Wheatus is an underappreciated song",
     "Others should contribute more sentences to be used in the game",
+    "Rust is the best programming language ever made",
+    "Tailwind will box your ears off",
+    "Maybe we can sneak in some Fibonacci sequences",
+    "DSA will set you free",
+    "I don't know what a semicolon is",
 }
 
 local extraWords = {
