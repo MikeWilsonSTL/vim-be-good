@@ -6,6 +6,12 @@ local WordRound = require("vim-be-good.games.words");
 local CiRound = require("vim-be-good.games.ci");
 local HjklRound = require("vim-be-good.games.hjkl");
 local WhackAMoleRound = require("vim-be-good.games.whackamole");
+local FindCharRound = require("vim-be-good.games.findchar");
+local DMotionRound = require("vim-be-good.games.dmotion");
+local VisualRound = require("vim-be-good.games.visual");
+local SearchRound = require("vim-be-good.games.search");
+local ReplaceCharRound = require("vim-be-good.games.replacechar");
+local SnakeRound = require("vim-be-good.games.snake");
 local log = require("vim-be-good.log");
 local statistics = require("vim-be-good.statistics");
 
@@ -41,6 +47,30 @@ local games = {
 
     whackamole = function(difficulty, window)
         return WhackAMoleRound:new(difficulty, window)
+    end,
+
+    ["find-char"] = function(difficulty, window)
+        return FindCharRound:new(difficulty, window)
+    end,
+
+    dmotion = function(difficulty, window)
+        return DMotionRound:new(difficulty, window)
+    end,
+
+    visual = function(difficulty, window)
+        return VisualRound:new(difficulty, window)
+    end,
+
+    search = function(difficulty, window)
+        return SearchRound:new(difficulty, window)
+    end,
+
+    ["replace-char"] = function(difficulty, window)
+        return ReplaceCharRound:new(difficulty, window)
+    end,
+
+    snake = function(difficulty, window)
+        return SnakeRound:new(difficulty, window)
     end,
 }
 
@@ -301,6 +331,15 @@ function GameRunner:run()
         "Round %d / %d", self.currentRound, self.config.roundCount))
 
     self.window.buffer:setInstructions(self.round.getInstructions())
+
+    -- Let games like snake signal round completion through a callback.
+    if self.round.setEndRoundCallback then
+        local runner = self
+        self.round:setEndRoundCallback(function()
+            runner:endRound(true)
+        end)
+    end
+
     local lines, cursorLine, cursorCol = self.round:render()
     self.window.buffer:render(lines)
 

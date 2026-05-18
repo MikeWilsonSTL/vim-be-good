@@ -55,7 +55,7 @@ function Menu:new(window, onResults)
         difficulty = types.difficulty[4],
 
         -- default to random
-        game = types.games[6],
+        game = types.games[12],
     }
 
     window.buffer:clear()

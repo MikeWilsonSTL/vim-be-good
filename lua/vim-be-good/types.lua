@@ -13,6 +13,12 @@ local games = {
     "relative",
     "hjkl",
     "whackamole",
+    "find-char",
+    "dmotion",
+    "visual",
+    "search",
+    "replace-char",
+    "snake",
     "random",
 }
 
