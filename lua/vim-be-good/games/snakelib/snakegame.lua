@@ -96,6 +96,8 @@ function SnakeGame:start()
 end
 
 function SnakeGame:shutdown(callback)
+    if self.isShuttingDown then return end
+    self.isShuttingDown = true
     self:cancelTimer()
     if self.scoreWin then
         V.nvim_win_close(self.scoreWin, true)

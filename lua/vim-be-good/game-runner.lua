@@ -248,6 +248,7 @@ function GameRunner:endRound(success)
     end
 
     local endTime = GameUtils.getTime()
+    if not self.startTime then return end
     local totalTime = endTime - self.startTime
     table.insert(self.results.timings, totalTime)
     table.insert(self.results.games, self.round:name())
